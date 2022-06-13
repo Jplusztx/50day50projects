@@ -1,0 +1,59 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: Helvetica, sans-serif;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expandingCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90vw;
+  height: 80vh;
+}
+.expandingCard_item {
+  position: relative;
+  cursor: pointer;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  transition: all 0.4s ease-in-out;
+}
+.expandingCard_item__active {
+  flex: 8;
+}
+.expandingCard_item:not(:last-of-type) {
+  margin-right: 20px;
+}
+
+.expandingCard_itemImg {
+  height: 100%;
+  object-fit: cover;
+}
+.expandingCard_itemDesc {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  font-size: 24px;
+  color: white;
+  opacity: 0;
+  white-space: nowrap;
+}
+.expandingCard_item__active > .expandingCard_itemDesc {
+  opacity: 1;
+  transition: opacity 0.4s ease-in 0.4s;
+}
+
+@media (max-width: 480px) {
+  .expandingCard {
+    width: 100vw;
+  }
+}
