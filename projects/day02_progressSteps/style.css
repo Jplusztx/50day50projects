@@ -1,0 +1,96 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+.container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+}
+
+#stepsIpt {
+  margin-bottom: 50px;
+}
+
+.progressSteps {
+  flex: 0 0 auto;
+  align-self: center;
+  display: inline-block;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: default;
+  text-align: center;
+}
+.progressSteps::before,
+.progressSteps::after {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  width: 100%;
+  background-color: #999;
+  height: 3px;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+}
+.progressSteps::before {
+  z-index: -1;
+}
+.progressSteps::after {
+  background-color: #3498db;
+  width: var(--width, 0%);
+  transition: width 0.3s;
+}
+.progressSteps_item {
+  --edge: 30px;
+  position: relative;
+  z-index: 1;
+  background: white;
+  display: inline-block;
+  width: var(--edge);
+  height: var(--edge);
+  border: 3px solid #999;
+  border-radius: 30px;
+  line-height: var(--edge);
+  font-size: 24px;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+.progressSteps_item:not(:last-of-type) {
+  margin-right: 100px;
+}
+.progressSteps_item__active {
+  border-color: #3498db;
+  transition: border-color 0.3s ease 0.3s;
+}
+
+.operate {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 50px;
+}
+.operate button {
+  outline: none;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+.operate_pre {
+  border: 1px solid #999;
+}
+.operate_next {
+  background-color: #3498db;
+}
