@@ -1,0 +1,85 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: #999;
+  overflow-x: hidden;
+}
+.container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 50px;
+  background: #fff;
+  transform-origin: top left;
+  transition: transform 0.3s linear;
+}
+.container__rotate {
+  transform: rotate(-15deg);
+}
+.content {
+  max-width: 1000px;
+  margin: 50px auto;
+}
+.circle_container {
+  position: fixed;
+  left: -100px;
+  top: -100px;
+}
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
+  background: #ff7979;
+  transition: transform 0.3s linear;
+}
+.container.container__rotate .circle {
+  transform: rotate(-75deg);
+}
+.circle div {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.close {
+  left: 0;
+  bottom: 0;
+  transform: rotate(90deg);
+}
+.menu {
+  right: 0;
+  bottom: 0;
+}
+
+nav {
+  position: fixed;
+  z-index: 100;
+  bottom: 40px;
+  left: 0px;
+}
+nav ul {
+  list-style: none;
+  letter-spacing: 3px;
+}
+nav ul li:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+nav ul li {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  transform: translateX(-100%);
+  transition: transform calc(0.4s - var(--i, 0) * 0.1s) linear;
+}
+.container__rotate + nav ul li {
+  transform: translateX(calc(50px + var(--i, 0) * 10px));
+  transition: transform 0.3s linear calc(var(--i, 0) * 0.1s);
+}
