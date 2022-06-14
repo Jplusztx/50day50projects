@@ -4,19 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>50天50个前端小Demo</title>
   </head>
   <body>
-    <h4>
-      <a href="./projects/day01_expandingCard/index.html">Day 1: 展开卡片</a>
-    </h4>
-    <h4>
-      <a href="./projects/day02_progressSteps/index.html">Day 2: 步骤条</a>
-    </h4>
-    <h4>
-      <a href="./projects/day03_rotateNavigation/index.html"
-        >Day 3: 旋转导航栏动画</a
-      >
-    </h4>
+    <script>
+      const fragment = document.createDocumentFragment();
+      const arr = [
+        {
+          name: "Day 1: 展开卡片",
+          path: "day01_expandingCard",
+        },
+        {
+          name: "Day 2: 步骤条",
+          path: "day02_progressSteps",
+        },
+        {
+          name: "Day 3: 旋转导航栏动画",
+          path: "day03_rotateNavigation",
+        },
+        {
+          name: "Day 4: 隐藏搜索",
+          path: "day04_hiddenSearch",
+        },
+      ];
+      arr.forEach((i) => {
+        const h4 = document.createElement("h4");
+        const a = document.createElement("a");
+        a.href = `./projects/${i.path}/index.html`;
+        a.textContent = i.name;
+        h4.appendChild(a);
+        fragment.appendChild(h4);
+      });
+      document.body.appendChild(fragment);
+    </script>
   </body>
 </html>

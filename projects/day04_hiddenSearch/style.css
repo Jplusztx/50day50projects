@@ -1,0 +1,56 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0, 146, 237);
+}
+
+.hiddenSearch {
+  position: relative;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+.hiddenSearch.hiddenSearch__active > input {
+  width: 200px;
+}
+
+.hiddenSearch > input {
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  width: 50px;
+  height: 50px;
+  transition: width 0.5s ease;
+  font-size: 18px;
+  padding: 15px;
+}
+
+.hiddenSearch > .hiddenSearch_icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  cursor: pointer;
+  user-select: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: transform 0.3s ease;
+}
+.hiddenSearch.hiddenSearch__active > .hiddenSearch_icon {
+  transform: translateX(100%);
+}
+.hiddenSearch > .hiddenSearch_icon > i {
+  font-size: 20px;
+}
