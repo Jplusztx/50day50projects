@@ -1,0 +1,57 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Muli", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: steelblue;
+}
+
+.form_control {
+  position: relative;
+  width: 300px;
+  margin: 20px 0 40px;
+}
+
+.form_control input {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  border-bottom: 2px #fff solid;
+  display: block;
+  padding: 15px 0;
+  color: #fff;
+  outline: none;
+  font-size: 18px;
+  transition: border-color 0.3s;
+}
+.form_control input:focus {
+  border-bottom-color: lightblue;
+}
+.form_control label {
+  position: absolute;
+  top: 15px;
+  cursor: default;
+}
+
+.form_control label span {
+  display: inline-block;
+  color: #fff;
+  font-size: 18px;
+  min-width: 5px;
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+    calc(var(--i, 0) * 50ms);
+}
+
+.form_control input:focus ~ label > span {
+  transform: translateY(-30px);
+  color: lightblue;
+}
