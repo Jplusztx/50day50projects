@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  position: relative;
+  height: 100vh;
+  background-color: #000;
+  font-family: "Muli", sans-serif;
+}
+.button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 25px;
+  border: 1px solid #fff;
+  background-color: purple;
+  color: #fff;
+  font-size: 24px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.circle {
+  position: absolute;
+  display: block;
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  background-color: #fff;
+  animation: scale 800ms ease-out;
+}
+@keyframes scale {
+  to {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
