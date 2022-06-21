@@ -47,6 +47,12 @@ body {
   border-radius: 5px;
   margin: 5px;
 }
+.notice-item.notice-item-enter {
+  animation: enter 0.3s forwards linear;
+}
+.notice-item.notice-item-leave {
+  animation: enter 0.3s forwards reverse linear;
+}
 .notice-item.notice-success {
   color: green;
 }
@@ -55,4 +61,13 @@ body {
 }
 .notice-item.notice-warning {
   color: rgb(185, 185, 90);
+}
+
+@keyframes enter {
+  from {
+    transform: translateX(calc(100% + 30px));
+  }
+  to {
+    transform: translateX(0);
+  }
 }

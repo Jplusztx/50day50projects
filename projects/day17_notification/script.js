@@ -1,4 +1,11 @@
-function notice(type, content = "Message") {
+function delay(time = 500) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, time);
+  });
+}
+async function notice(type, content = "Message") {
   let noticeContent = document.querySelector("#notice-content");
   if (!noticeContent) {
     const div = document.createElement("div");
@@ -10,13 +17,18 @@ function notice(type, content = "Message") {
   div.className = "notice-item";
   div.classList.add(`notice-${type}`);
   div.textContent = content;
+  div.classList.add("notice-item-enter");
   noticeContent.appendChild(div);
-  setTimeout(() => {
+  await delay(500);
+  div.classList.remove("notice-item-enter");
+  setTimeout(async () => {
+    div.classList.add("notice-item-leave");
+    await delay(500);
     div.remove();
     if (!noticeContent.hasChildNodes()) {
       noticeContent.remove();
     }
-  }, 5000);
+  }, 2000);
 }
 
 notice.success = (content) => createNotice("success", content);
