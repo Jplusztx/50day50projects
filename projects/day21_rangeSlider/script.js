@@ -1,0 +1,62 @@
+const container = document.querySelector(".range-container");
+const nav = document.querySelector(".range-nav");
+const control = document.querySelector(".range-navControl");
+
+let minValue = parseInt(container.getAttribute("min"));
+let maxValue = parseInt(container.getAttribute("max"));
+let curValue = parseInt(container.getAttribute("value"));
+
+if (isNaN(minValue) || !isFinite(minValue)) minValue = 0;
+if (isNaN(maxValue) || !isFinite(maxValue)) maxValue = 100;
+
+if (!control.hasAttribute("value")) {
+  let setValue = curValue;
+  if (isNaN(curValue) || !isFinite(curValue) || curValue < minValue) {
+    setValue = minValue;
+  } else if (curValue > maxValue) {
+    setValue = maxValue;
+  }
+  setXByValue(setValue);
+}
+
+function setValueByX(x) {
+  const min = 0;
+  const max = nav.clientWidth;
+  if (x < min) x = min;
+  else if (x > max) x = max;
+  control.setAttribute(
+    "value",
+    ((x / max) * (maxValue - minValue) + minValue) ^ 0
+  );
+  control.style.setProperty("--x", x);
+}
+
+function setXByValue(value) {
+  const max = nav.clientWidth;
+  const x = ((value - minValue) / (maxValue - minValue)) * max;
+  control.style.setProperty("--x", x);
+  control.setAttribute("value", value);
+}
+
+control.addEventListener("mousedown", (downEvent) => {
+  let canMove = true;
+  const downPosX = downEvent.x;
+  const xStr = control.style.getPropertyValue("--x");
+  const curX = xStr === "" ? 0 : parseInt(xStr);
+  window.addEventListener("mousemove", (moveEvent) => {
+    if (!canMove) return;
+    moveEvent.preventDefault();
+    const movePosX = moveEvent.x;
+    let diffX = movePosX - downPosX;
+    setValueByX(curX + diffX);
+  });
+  window.addEventListener("mouseup", () => {
+    canMove = false;
+  });
+});
+
+nav.addEventListener("mousedown", (e) => {
+  const left = nav.getBoundingClientRect().left;
+  let setL = e.x - left;
+  setValueByX(setL);
+});
