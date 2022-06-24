@@ -1,0 +1,88 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+:root {
+  font-size: 100px;
+  font-family: Helvetica;
+}
+body {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e0e0e0;
+}
+
+.counter {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 5rem;
+  height: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.6) 0 0 2px 0, rgba(0, 0, 0, 0.6) 0 0 10px 0;
+  border-radius: 0.1rem;
+  background-color: #000;
+  overflow: hidden;
+  padding: 0.3rem 0;
+  user-select: none;
+}
+.counter::before {
+  position: absolute;
+  border-radius: 0.1rem;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0) 30%,
+    rgba(0, 0, 0, 0) 70%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+}
+.counter button {
+  border: none;
+  outline: none;
+  background-color: #000;
+  color: white;
+  height: 100%;
+  flex: 1;
+  cursor: pointer;
+  font-size: 48px;
+  z-index: 2;
+}
+
+.counter-num {
+  display: block;
+  color: #fff;
+  position: relative;
+  text-align: center;
+  height: 1rem;
+  line-height: 1rem;
+  flex: 2;
+  transform: translateY(-1rem);
+}
+.counter-num.before {
+  transform: translateY(0rem);
+  transition: transform 0.3s ease-in-out;
+}
+.counter-num.after {
+  transform: translateY(-2rem);
+  transition: transform 0.3s ease-in-out;
+}
+.counter-num::before,
+.counter-num::after {
+  display: block;
+  text-align: center;
+}
+.counter-num::before {
+  content: attr(before);
+}
+.counter-num::after {
+  content: attr(after);
+}
