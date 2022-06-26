@@ -1,0 +1,67 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.content {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  font-size: 68px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  transform: translateY(-50%);
+}
+
+/*
+  可以修改此处的参数来修改轮播图的大小，和展示样式
+  如果需要添加左右点击箭头，直接在该dom下添加箭头即可，点击箭头调用对应的pre和next函数
+*/
+#carousel {
+  width: 100vw;
+  height: 40vh;
+}
+#carousel1 {
+  width: 100vw;
+  height: 40vh;
+}
+
+/* 以下属于Carousel类中使用的class名， 不允许修改 */
+.carousel_item > img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.carousel_item {
+  position: absolute;
+  opacity: 0;
+}
+.carousel_item__cur {
+  opacity: 1;
+  transform: translateX(0);
+}
+.carousel_item__next {
+  opacity: 1;
+  transform: translateX(100%);
+}
+.carousel_item__pre {
+  opacity: 1;
+  transform: translateX(-100%);
+}
+
+.carousel_item__active {
+  transition: transform 0.3s linear;
+}
