@@ -63,5 +63,5 @@ body {
 }
 
 .carousel_item__active {
-  transition: transform 0.3s linear;
+  transition: transform 0.5s ease-in-out;
 }
