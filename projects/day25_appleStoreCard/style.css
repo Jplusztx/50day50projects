@@ -1,0 +1,110 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+:root {
+  font-size: 15px;
+  font-family: Helvetica;
+
+  --card-width: 420px;
+  --card-height: 280px;
+  --img-height: 226px;
+  --img-height-expanded: 320px;
+
+  background-color: #333;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.phone {
+  position: relative;
+  width: 480px;
+  height: 700px;
+  border-radius: 1rem;
+  overflow: auto;
+  background-color: #eee;
+  overflow: auto;
+}
+.phone.no-scroll {
+  overflow: hidden;
+}
+.card {
+  position: relative;
+  cursor: pointer;
+  width: var(--card-width);
+  height: var(--card-height);
+  background-color: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 10px auto;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 0.2rem 0.2rem;
+  transition: 0.3s all cubic-bezier(0, 1, 0.95, 1.05);
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: var(--img-height);
+  object-fit: cover;
+
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.card h4 {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.8rem 1.2rem;
+  background-color: #fff;
+  line-height: 2rem;
+  letter-spacing: -0.5px;
+  padding-bottom: 0;
+}
+
+.card .content-wrapper {
+  height: 0;
+  overflow: hidden;
+  transition: 0.3s all ease-out;
+  opacity: 0;
+}
+.card .content-wrapper .content {
+  padding: 0 1.2rem;
+  background-color: #fff;
+  overflow: auto;
+}
+
+.card p {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+
+/* active class */
+.card.active {
+  z-index: 1;
+  transform: translateY(calc(var(--y, 0) * 1px)) scale(var(--scale, 1));
+  transform-origin: 50% 0;
+  border-radius: 0;
+  height: calc(var(--height) * 1px);
+}
+
+.card.active h4 {
+  padding-bottom: 0.8rem;
+}
+
+.card.active img {
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0rem;
+  height: var(--img-height-expanded);
+}
+
+.card.active .content-wrapper {
+  height: 100vh;
+  transition: 0.3s all ease-in;
+  opacity: 1;
+}
