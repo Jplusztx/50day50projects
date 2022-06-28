@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tick Animation</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <svg width="400" height="400">
+      <circle
+        cx="200"
+        cy="200"
+        r="190"
+        fill="none"
+        stroke="#68e534"
+        stroke-width="20"
+        stroke-linecap="round"
+        transform="rotate(-90 200 200)"
+        class="circle"
+      ></circle>
+      <polyline
+        fill="none"
+        stroke="#68e534"
+        stroke-width="24"
+        points="88,214 173,284 304,138"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="line"
+      ></polyline>
+    </svg>
+    <svg width="420" height="80">
+      <defs>
+        <linearGradient id="myColor" gradientTransform="rotate(90)">
+          <stop offset="0%" stop-color="#91bd3a"></stop>
+          <stop offset="100%" stop-color="#12cad6"></stop>
+        </linearGradient>
+      </defs>
+      <text x="0" y="60" class="text">By Challenge 小志</text>
+    </svg>
+  </body>
+</html>

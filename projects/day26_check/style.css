@@ -1,0 +1,63 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle {
+  stroke-dasharray: 1194;
+  stroke-dashoffset: 1194;
+  animation: round 1s forwards linear;
+}
+.line {
+  stroke-dasharray: 350;
+  stroke-dashoffset: 350;
+  animation: line 1s forwards linear 1s;
+}
+
+.text {
+  font-family: Helvetica;
+  letter-spacing: 0px;
+  font-size: 48px;
+  stroke: url(#myColor);
+  font-weight: bold;
+  stroke-width: 2px;
+  fill: none;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+  animation: text 5s forwards linear;
+}
+
+@keyframes round {
+  from {
+    stroke-dashoffset: 1194;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes line {
+  from {
+    stroke-dashoffset: 350;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes text {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
