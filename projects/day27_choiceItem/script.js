@@ -23,21 +23,9 @@ function createSelectDiv() {
 
 function checkBoxSelect(start, end) {
   const select = [];
-  function check(point) {
-    return (
-      point.x >= start.x &&
-      point.y >= start.y &&
-      point.x <= end.x &&
-      point.y <= end.y
-    );
-  }
   boxes.forEach((box, index) => {
     const { top, left, bottom, right } = box.getBoundingClientRect();
-    const tl = { x: left, y: top };
-    const tr = { x: right, y: top };
-    const bl = { x: left, y: bottom };
-    const br = { x: right, y: bottom };
-    if (check(tl) || check(tr) || check(bl) || check(br)) {
+    if (!(end.x < left || end.y < top || start.x > right || start.y > bottom)) {
       box.classList.add("active");
       select.push(index + 1);
     } else {
