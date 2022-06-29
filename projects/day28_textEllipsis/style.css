@@ -1,0 +1,32 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+:root {
+  font-family: Helvetica;
+  font-size: 15px;
+}
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+.textEllipsis {
+  word-break: break-all;
+}
+.textEllipsis::after {
+  content: attr(more);
+}
+.text1 {
+  margin: 0 auto;
+  width: 400px;
+  height: 200px;
+  border: 1px solid red;
+  font-size: 24px;
+}
+.text2 {
+  margin: 40px;
+  height: 200px;
+  border: 1px solid red;
+  font-size: 12px;
+  line-height: 24px;
+}
