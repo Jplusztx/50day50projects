@@ -1,6 +1,7 @@
 const container = document.querySelector(".range-container");
 const nav = document.querySelector(".range-nav");
 const control = document.querySelector(".range-navControl");
+const label = document.querySelector(".range-navControl-label");
 
 let minValue = parseInt(container.getAttribute("min"));
 let maxValue = parseInt(container.getAttribute("max"));
@@ -24,10 +25,7 @@ function setValueByX(x) {
   const max = nav.clientWidth;
   if (x < min) x = min;
   else if (x > max) x = max;
-  control.setAttribute(
-    "value",
-    ((x / max) * (maxValue - minValue) + minValue) ^ 0
-  );
+  label.textContent = ((x / max) * (maxValue - minValue) + minValue) ^ 0;
   control.style.setProperty("--x", x);
 }
 
@@ -35,7 +33,7 @@ function setXByValue(value) {
   const max = nav.clientWidth;
   const x = ((value - minValue) / (maxValue - minValue)) * max;
   control.style.setProperty("--x", x);
-  control.setAttribute("value", value);
+  label.textContent = value;
 }
 
 control.addEventListener("mousedown", (downEvent) => {
@@ -56,7 +54,22 @@ control.addEventListener("mousedown", (downEvent) => {
 });
 
 nav.addEventListener("mousedown", (e) => {
+  let canMove = true;
   const left = nav.getBoundingClientRect().left;
-  let setL = e.x - left;
-  setValueByX(setL);
+  let x = e.x - left;
+  setValueByX(x);
+  let downPosX = null;
+  window.addEventListener("mousemove", (moveEvent) => {
+    if (!canMove) return;
+    moveEvent.preventDefault();
+    if (!downPosX) {
+      downPosX = moveEvent.x;
+    }
+    const movePosX = moveEvent.x;
+    let diffX = movePosX - downPosX;
+    setValueByX(x + diffX);
+  });
+  window.addEventListener("mouseup", () => {
+    canMove = false;
+  });
 });

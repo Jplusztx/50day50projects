@@ -42,17 +42,14 @@ body {
   top: calc((var(--radius) - var(--navHeight)) / 2 * -1);
   transform: translateX(calc(var(--x, 0) * 1px));
 }
-.range-navControl::before {
-  --labelWidth: 50px;
-  content: attr(value);
+.range-navControl-label {
   position: absolute;
   display: inline-block;
+  padding: 5px 20px;
   width: var(--labelWidth);
-  height: 25px;
-  line-height: 25px;
-  text-align: center;
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2), 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  left: calc((var(--labelWidth) - var(--radius)) / 2 * -1);
-  top: -35px;
+  transform: translate(calc(-50% + var(--radius) / 2), -125%);
   border-radius: 5px;
+  user-select: none;
+  cursor: pointer;
 }
